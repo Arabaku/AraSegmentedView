@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AraSegmentedView_Example' do
+  pod 'AraSegmentedView', :path => '../'
+
+  target 'AraSegmentedView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
