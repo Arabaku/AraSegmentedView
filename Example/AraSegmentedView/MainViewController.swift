@@ -19,14 +19,14 @@ class MainViewController: UIViewController {
             initIndex: 1
         )
         sv.backgroundColor = UIColor.black
-        sv.normalTitleColor = UIColor.white.withAlphaComponent(0.5)
-        sv.selectedTitleColor = UIColor.white
+        sv.titleNormalColor = UIColor.white.withAlphaComponent(0.5)
+        sv.titleSelectedColor = UIColor.white
+        sv.titleMarginMin = 15
         sv.lineViewHeight = 2
         sv.showLineView = true
         sv.tabViewAlign = .average
         sv.titleFont = UIFont.systemFont(ofSize: 15)
         sv.lineViewMarginBottom = 3
-        sv.buttonMarginMin = 15
         return sv
     }()
     
@@ -65,16 +65,20 @@ class MainViewController: UIViewController {
 
 extension MainViewController: AraSegmentedViewDelegate {
     
-    func araSegmentedViewDidMoveToIndex(_ index: Int) {
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didClickIndex index: Int, oldIndex: Int) {
+        print("点击了index：\(index)，上一个index：\(oldIndex)")
+    }
+    
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didMoveToIndex index: Int) {
         print("已经移动到：\(index)")
     }
     
-    func araSegmentedViewIsDragging(fromIndex: Int, toIndex: Int, progress: Float) {
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, isDraggingFromIndex fromIndex: Int, toIndex: Int, progress: Float) {
         print("从：\(fromIndex), 拖动到：\(toIndex), 进度：\(progress)")
     }
     
-    func araSegmentedViewDidClickIndex(_ index: Int, oldIndx: Int) {
-        print("点击了index：\(index)，上一个index：\(oldIndx)")
+    func araSegmentedViewIsMoving(_ araSegmentedView: AraSegmentedView) {
+        
     }
     
 }

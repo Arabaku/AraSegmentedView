@@ -9,14 +9,16 @@
 import Foundation
 
 public protocol AraSegmentedViewDelegate: class {
-    func araSegmentedViewDidClickIndex(_ index: Int, oldIndx: Int)
-    func araSegmentedViewDidMoveToIndex(_ index: Int)
-    func araSegmentedViewIsDragging(fromIndex: Int, toIndex: Int, progress: Float)
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didClickIndex index: Int, oldIndex: Int)
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didMoveToIndex index: Int)
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, isDraggingFromIndex fromIndex: Int, toIndex: Int, progress: Float)
+    func araSegmentedViewIsMoving(_ araSegmentedView: AraSegmentedView)
 }
 
 public extension AraSegmentedViewDelegate {
-    func araSegmentedViewDidClickIndex(_ index: Int, oldIndx: Int) {}
-    func araSegmentedViewDidMoveToIndex(_ index: Int) {}
-    func araSegmentedViewIsDragging(fromIndex: Int, toIndex: Int, progress: Float) {}
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didClickIndex index: Int, oldIndex: Int) {}
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, didMoveToIndex index: Int) {}
+    func araSegmentedView(_ araSegmentedView: AraSegmentedView, isDraggingFromIndex fromIndex: Int, toIndex: Int, progress: Float) {}
+    func araSegmentedViewIsMoving(_ araSegmentedView: AraSegmentedView) {}
 }
 

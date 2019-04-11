@@ -48,13 +48,13 @@ open class AraSegmentedView: UIView {
         
         segmentedControl.buttonClickAction = { [weak self] (index, oldIndex) in
             guard let strongSelf = self else { return }
-            strongSelf.delegate?.araSegmentedViewDidClickIndex(index, oldIndx: oldIndex)
+            strongSelf.delegate?.araSegmentedView(strongSelf, didClickIndex: index, oldIndex: oldIndex)
         }
         segmentedControl.changeIndexAction = { [weak self] (index) in
             guard let strongSelf = self else { return }
             strongSelf.isTap = true
             strongSelf.containerCollectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
-            strongSelf.delegate?.araSegmentedViewDidMoveToIndex(index)
+            strongSelf.delegate?.araSegmentedView(strongSelf, didMoveToIndex: index)
         }
     }
     
@@ -115,8 +115,10 @@ extension AraSegmentedView {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !isTap else { return }
+        delegate?.araSegmentedViewIsMoving(self)
         
+        guard !isTap else { return }
+    
         let offSetX = scrollView.contentOffset.x
         let temp = offSetX / bounds.width
         
@@ -139,7 +141,7 @@ extension AraSegmentedView {
             oldIndex = currentIndex + 1
             progress = 1.0 - progress
         }
-        delegate?.araSegmentedViewIsDragging(fromIndex: oldIndex, toIndex: currentIndex, progress: Float(progress))
+        delegate?.araSegmentedView(self, isDraggingFromIndex: oldIndex, toIndex: currentIndex, progress: Float(progress))
         segmentedControl.adjuctUIWithProgress(progress, oldIndex: oldIndex, currentIndex: currentIndex)
     }
     

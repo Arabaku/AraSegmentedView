@@ -11,8 +11,8 @@ import UIKit
 /*
  TabViewStyle:
  
- left -> 根据 buttonMarginMin 自左向右排版
- average -> 先根据 left 计算 contentTotalWidth，小于 tabScrollView 就重新计算 buttonMarginMin
+ left -> 根据 titleMarginMin 自左向右排版
+ average -> 先根据 left 计算 contentTotalWidth，小于 tabScrollView 就重新计算 titleMarginMin
  averageForce -> 先根据 left 计算 contentTotalWidth，小于 tabScrollView 就强制设置 button 的平均长度
  */
 public enum TabViewAlign {
@@ -29,15 +29,15 @@ open class AraSegmentedControl: UIView {
     private var buttonMarginReal: CGFloat = 0
     
     // 宽度间隙最小值
-    open var buttonMarginMin: CGFloat = 15 {
+    open var titleMarginMin: CGFloat = 15 {
         didSet {
-            guard buttonMarginMin != oldValue else { return }
+            guard titleMarginMin != oldValue else { return }
             contentTotalWidth = 0
             for i in 0 ..< buttonsArray.count {
                 if i == 0 {
-                    contentTotalWidth += buttonMarginMin + buttonsArray[i].ara.titleRealWidth + buttonMarginMin
+                    contentTotalWidth += titleMarginMin + buttonsArray[i].ara.titleRealWidth + titleMarginMin
                 } else {
-                    contentTotalWidth += buttonsArray[i].ara.titleRealWidth + buttonMarginMin
+                    contentTotalWidth += buttonsArray[i].ara.titleRealWidth + titleMarginMin
                 }
             }
             setupFrame()
@@ -51,28 +51,28 @@ open class AraSegmentedControl: UIView {
             for i in 0 ..< buttonsArray.count {
                 buttonsArray[i].titleLabel?.font = titleFont
                 if i == 0 {
-                    contentTotalWidth += buttonMarginMin + buttonsArray[i].ara.titleRealWidth + buttonMarginMin
+                    contentTotalWidth += titleMarginMin + buttonsArray[i].ara.titleRealWidth + titleMarginMin
                 } else {
-                    contentTotalWidth += buttonsArray[i].ara.titleRealWidth + buttonMarginMin
+                    contentTotalWidth += buttonsArray[i].ara.titleRealWidth + titleMarginMin
                 }
             }
             setupFrame()
         }
     }
     // text 未选中颜色
-    open var normalTitleColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
+    open var titleNormalColor: UIColor = UIColor.white.withAlphaComponent(0.5) {
         didSet {
-            guard normalTitleColor != oldValue else { return }
+            guard titleNormalColor != oldValue else { return }
             for i in 0 ..< buttonsArray.count where i != currentIndex {
-                buttonsArray[i].setTitleColor(normalTitleColor, for: .normal)
+                buttonsArray[i].setTitleColor(titleNormalColor, for: .normal)
             }
         }
     }
     // text 选中颜色
-    open var selectedTitleColor: UIColor = UIColor.white {
+    open var titleSelectedColor: UIColor = UIColor.white {
         didSet {
-            guard selectedTitleColor != oldValue else { return }
-            buttonsArray[currentIndex].setTitleColor(selectedTitleColor, for: .normal)
+            guard titleSelectedColor != oldValue else { return }
+            buttonsArray[currentIndex].setTitleColor(titleSelectedColor, for: .normal)
         }
     }
     // lineView 样式
@@ -182,12 +182,12 @@ open class AraSegmentedControl: UIView {
             button.titleLabel?.baselineAdjustment = .alignCenters
             button.titleLabel?.font = titleFont
             button.setTitle(titlesArray[i], for: .normal)
-            button.setTitleColor(normalTitleColor, for: .normal)
+            button.setTitleColor(titleNormalColor, for: .normal)
             button.addTarget(self, action: #selector(onLabelTap(_:)), for: .touchUpInside)
             if i == 0 {
-                contentTotalWidth += buttonMarginMin + button.ara.titleRealWidth + buttonMarginMin
+                contentTotalWidth += titleMarginMin + button.ara.titleRealWidth + titleMarginMin
             } else {
-                contentTotalWidth += button.ara.titleRealWidth + buttonMarginMin
+                contentTotalWidth += button.ara.titleRealWidth + titleMarginMin
             }
             buttonsArray.append(button)
         }
@@ -198,14 +198,14 @@ open class AraSegmentedControl: UIView {
         switch tabViewAlign {
         case .left:
             tabScrollView.contentSize = CGSize(width: contentTotalWidth, height: tabScrollView.bounds.size.height)
-            buttonMarginReal = buttonMarginMin
+            buttonMarginReal = titleMarginMin
             break
         case .average:
             if contentTotalWidth >= tabScrollView.bounds.size.width {
                 tabScrollView.contentSize = CGSize(width: contentTotalWidth, height: tabScrollView.bounds.size.height)
-                buttonMarginReal = buttonMarginMin
+                buttonMarginReal = titleMarginMin
             } else {
-                // 重新计算 buttonMarginMin
+                // 重新计算 titleMarginMin
                 tabScrollView.contentSize = CGSize(width: tabScrollView.bounds.size.width, height: bounds.size.height)
                 var temp: CGFloat = tabScrollView.bounds.size.width
                 for i in 0 ..< buttonsArray.count {
@@ -223,7 +223,7 @@ open class AraSegmentedControl: UIView {
             let height: CGFloat = bounds.size.height - lineViewHeight
             buttonsArray[i].frame = CGRect(x: x, y: y, width: width, height: height)
         }
-        buttonsArray[currentIndex].setTitleColor(selectedTitleColor, for: .normal)
+        buttonsArray[currentIndex].setTitleColor(titleSelectedColor, for: .normal)
         
         // lineView
         let x: CGFloat = 0
@@ -260,9 +260,9 @@ open class AraSegmentedControl: UIView {
     func resetTextHighlightAndLineView() {
         for i in 0 ..< buttonsArray.count {
             if i == currentIndex {
-                buttonsArray[i].setTitleColor(selectedTitleColor, for: .normal)
+                buttonsArray[i].setTitleColor(titleSelectedColor, for: .normal)
             } else {
-                buttonsArray[i].setTitleColor(normalTitleColor, for: .normal)
+                buttonsArray[i].setTitleColor(titleNormalColor, for: .normal)
             }
         }
         let currentButton = buttonsArray[currentIndex]
