@@ -1,0 +1,6 @@
+framework module AraSegmentedView {
+  umbrella header "AraSegmentedView-umbrella.h"
+
+  export *
+  module * { export * }
+}
