@@ -1,13 +1,13 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AraSegmentedView'
-  s.version          = '0.0.1'
+  s.version          = '0.1.0'
   s.summary          = 'Elegant segmented view in Swift. Inspired by Bilibili.'
 
   s.homepage         = 'https://github.com/Arabaku/AraSegmentedView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/static.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Arabaku@126.com' => 'Arabaku@126.com' }
+  s.author           = { 'Arabaku' => 'Arabaku@126.com' }
   s.source           = { :git => 'https://github.com/Arabaku/AraSegmentedView.git', :tag => s.version.to_s }
   
   s.ios.deployment_target = '10.0'

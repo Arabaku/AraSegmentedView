@@ -54,7 +54,7 @@ segmentedControl.titleNormalColor = UIColor.white.withAlphaComponent(0.5)
 segmentedControl.titleSelectedColor = UIColor.white
 segmentedControl.titleFont = UIFont.systemFont(ofSize: 15)
 segmentedControl.lineViewMarginBottom = 3
-segmentedControl.buttonMarginMin = 15
+segmentedControl.titleMarginMin = 15
 segmentedControl.tabViewAlign = .average
 ```
 
