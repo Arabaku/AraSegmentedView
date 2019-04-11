@@ -1,5 +1,5 @@
 PODS:
-  - AraSegmentedView (0.0.1)
+  - AraSegmentedView (0.1.0)
 
 DEPENDENCIES:
   - AraSegmentedView (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AraSegmentedView: 364f4b4ffff51b0661d40966fa1d1d388ba6d8ab
+  AraSegmentedView: 22fc20a51eb14d1f11f32effef44babfc5c69502
 
 PODFILE CHECKSUM: 969b6b236a6983cbd765ab4fb31eb69702ff5cff
 
-COCOAPODS: 1.7.0.beta.1
+COCOAPODS: 1.7.0.beta.3
