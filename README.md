@@ -8,7 +8,7 @@ AraSegmentedView 是模仿 `哔哩哔哩` iOS 客户端的分类切换滚动视�
 
 AraSegmentedView 将 控制器（AraSegmentedControl） 与 滚动视图（AraSegmentedView） 分离，用户可自己定制两者所在位置。
 
-##效果预览
+## 效果预览
 
 <div>
 	<img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/style1.gif" width = "30%" div/>
