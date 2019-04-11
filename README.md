@@ -11,9 +11,8 @@ AraSegmentedView 将 控制器（AraSegmentedControl） 与 滚动视图（AraSe
 ##效果预览
 
 <div>
-	<img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/IMG_2385.PNG" width = "25%" div/>
-    <img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/IMG_2385.PNG" width = "25%" div/>
-    <img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/IMG_2385.PNG" width = "25%" div/>
+	<img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/style1.gif" width = "30%" div/>
+    <img src="https://raw.githubusercontent.com/Arabaku/AraSegmentedView/master/Assets/style2.gif" width = "30%" div/>
 </div>
 
 ## Requirements
